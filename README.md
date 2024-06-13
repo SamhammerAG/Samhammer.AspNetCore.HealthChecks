@@ -8,7 +8,7 @@ A collection of health checks for AspDotnet core
 [nuget-image-filesystemdirectory]:https://img.shields.io/nuget/v/Samhammer.AspNetCore.HealthChecks.FilesystemDirectory
 [nuget-url-filesystemdirectory]:https://www.nuget.org/packages/Samhammer.AspNetCore.HealthChecks.FilesystemDirectory/
 
-This check verifies if a directory exists. Also it can test write access by creating and deleting a test file (Filename: "<guid>.health").
+This check verifies if a directory exists. Also it can test write access by creating and deleting a test file (Filename: "randomGuid.health").
 
 - Add nuget package [![Nuget][nuget-image-filesystemdirectory]][nuget-url-filesystemdirectory]
 - Register in Program.cs as shown below
