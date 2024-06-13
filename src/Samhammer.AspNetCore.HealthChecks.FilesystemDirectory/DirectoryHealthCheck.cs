@@ -15,19 +15,19 @@ namespace Samhammer.AspNetCore.HealthChecks.FilesystemDirectory
             this.options = options;
         }
 
-        public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
+        public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrWhiteSpace(options.DirectoryPath))
             {
                 return options.FailForEmptyPath
-                    ? HealthCheckResult.Unhealthy("No path configured")
-                    : HealthCheckResult.Healthy("No path configured");
+                    ? Task.FromResult(HealthCheckResult.Unhealthy("No path configured"))
+                    : Task.FromResult(HealthCheckResult.Healthy("No path configured"));
             }
 
             var directoryExists = Directory.Exists(options.DirectoryPath);
             if (!directoryExists)
             {
-                return HealthCheckResult.Unhealthy($"directory {options.DirectoryPath} does not exist");
+                return Task.FromResult(HealthCheckResult.Unhealthy($"directory {options.DirectoryPath} does not exist"));
             }
 
             if (options.TryWrite)
@@ -35,11 +35,11 @@ namespace Samhammer.AspNetCore.HealthChecks.FilesystemDirectory
                 var wasWriteSuccessful = TryCreateTestFile(out var writeCheckResult);
                 if (!wasWriteSuccessful)
                 {
-                    return writeCheckResult!.Value;
+                    return Task.FromResult(writeCheckResult!.Value);
                 }
             }
 
-            return HealthCheckResult.Healthy("ok");
+            return Task.FromResult(HealthCheckResult.Healthy("ok"));
         }
 
         private bool TryCreateTestFile(out HealthCheckResult? checkResult)

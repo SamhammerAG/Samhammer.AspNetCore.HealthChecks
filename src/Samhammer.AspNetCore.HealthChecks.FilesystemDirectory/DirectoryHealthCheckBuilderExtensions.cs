@@ -12,7 +12,7 @@ namespace Samhammer.AspNetCore.HealthChecks.FilesystemDirectory
             Action<DirectoryHealthCheckOptions> configure,
             string name = "directoryHealthCheck",
             HealthStatus? failureStatus = default,
-            IEnumerable<string>? tags = default,
+            IEnumerable<string> tags = default,
             TimeSpan? timeout = default)
         {
             var options = new DirectoryHealthCheckOptions();
