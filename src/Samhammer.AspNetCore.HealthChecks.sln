@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samhammer.AspNetCore.HealthChecks.FilesystemDirectory", "Samhammer.AspNetCore.HealthChecks.FilesystemDirectory\Samhammer.AspNetCore.HealthChecks.FilesystemDirectory.csproj", "{435B8C94-CFD4-4786-9D5A-7E42BC56CA83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{435B8C94-CFD4-4786-9D5A-7E42BC56CA83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{435B8C94-CFD4-4786-9D5A-7E42BC56CA83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{435B8C94-CFD4-4786-9D5A-7E42BC56CA83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{435B8C94-CFD4-4786-9D5A-7E42BC56CA83}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCA981EE-E4AF-41E4-902A-327274E81B4F}
+	EndGlobalSection
+EndGlobal
