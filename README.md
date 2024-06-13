@@ -20,7 +20,7 @@ builder.Services
     .AddDirectory(o =>
     {
         o.DirectoryPath = "/opt/app/mydir"; // The path to a directory
-        o.FailForEmptyPath = true // If set to ture the check fails if the path is null or empty
+        o.FailForEmptyPath = true // If set to true the check fails if the path is null or empty
         o.TryWrite = true; // If set to true the check creates a test file to verify write access
     });
 ```
