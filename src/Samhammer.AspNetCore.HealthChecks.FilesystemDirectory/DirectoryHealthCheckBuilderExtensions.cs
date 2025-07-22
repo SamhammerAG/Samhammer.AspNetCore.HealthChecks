@@ -28,18 +28,20 @@ namespace Samhammer.AspNetCore.HealthChecks.FilesystemDirectory
 
         public static IHealthChecksBuilder AddDirectory(
             this IHealthChecksBuilder builder,
-            Func<IServiceProvider, DirectoryHealthCheckOptions> optionsProvider,
+            Action<IServiceProvider, DirectoryHealthCheckOptions> configure,
             string name = "directoryHealthCheck",
             HealthStatus? failureStatus = null,
             IEnumerable<string> tags = null,
             TimeSpan? timeout = null)
         {
+            var options = new DirectoryHealthCheckOptions();
+
             return builder.Add(
                 new HealthCheckRegistration(
                     name,
                     sp =>
                     {
-                        var options = optionsProvider(sp);
+                        configure(sp, options);
                         return new DirectoryHealthCheck(options);
                     },
                     failureStatus,
