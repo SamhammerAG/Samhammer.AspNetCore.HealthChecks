@@ -25,19 +25,18 @@ builder.Services
     });
 ```
 
+You can also use serviceProvider during options setup.
+
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddHealthChecks()
-    .AddDirectory((sp) =>
+    .AddDirectory((sp, o) =>
     {
-        var path = sp.GetService<IOptions<FileImportOptions>>().Value.DirectoryPath;
-        return new DirectoryHealthCheckOptions
-        {
-          DirectoryPath = path, // The path to a directory
-          FailForEmptyPath = true, // If set to true the check fails if the path is null or empty
-          TryWrite = true // If set to true the check creates a test file to verify write access
-        }
+        var path = sp.GetService<IOptions<MyFileOptions>>().Value.DirectoryPath;
+        o.DirectoryPath = path; // The path to a directory
+        o.FailForEmptyPath = true // If set to true the check fails if the path is null or empty
+        o.TryWrite = true; // If set to true the check creates a test file to verify write access
     });
 ```
 
