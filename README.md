@@ -25,5 +25,21 @@ builder.Services
     });
 ```
 
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+builder.Services
+    .AddHealthChecks()
+    .AddDirectory((sp) =>
+    {
+        var path = sp.GetService<IOptions<FileImportOptions>>().Value.DirectoryPath;
+        return new DirectoryHealthCheckOptions
+        {
+          DirectoryPath = path, // The path to a directory
+          FailForEmptyPath = true, // If set to true the check fails if the path is null or empty
+          TryWrite = true // If set to true the check creates a test file to verify write access
+        }
+    });
+```
+
 ## How to publish package
 - Create a tag and let the github action do the publishing for you
